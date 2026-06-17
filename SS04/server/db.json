@@ -59,18 +59,6 @@
       "name": "Đặng Thị K",
       "email": "dangthik@example.com",
       "age": 30
-    },
-    {
-      "name": "Test Dien 01",
-      "email": "testdien01@gmail.com",
-      "age": 18,
-      "id": "6QLAPvukDQI"
-    },
-    {
-      "name": "Test Dien 02",
-      "email": "testdien01@gmail.com",
-      "age": 18,
-      "id": "GLpLTlwYn20"
     }
   ],
   "products": [
@@ -206,6 +194,5 @@
       "quantity": 1,
       "totalPrice": 1500000
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }
