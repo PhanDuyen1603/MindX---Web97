@@ -4,6 +4,7 @@ import Customer from './models/Customer.js';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import customerRouter from './routers/customerRouter.js';
 
 dotenv.config();
 const PORT = process.env.PORT || 8080;
@@ -11,24 +12,12 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 app.use(express.json());
 
-app.get('/customers', async (req, res) => {
-    try {
-        const list = await Customer.find({}).lean();
-        console.log(list);
-        res.json(list);
-    } catch (error) {
-        console.error('Failed to fetch customers:', error);
-        res.status(500).json({ error: 'Failed to fetch customers' });
-    }
-});
+app.use('/customers', customerRouter);
+app.use('/customers/:customerId/orders', customerRouter);
+app.use('/customers/:id', customerRouter);
 
-app.get('/customers/:id', async (req, res) => {
-    const customer= await Customer.findOne({id: req.params.id}).lean();
-if(!customer) {
-        return res.status(404).json({ error: 'Customer not found' });
-    }
-    res.json(customer);
-});
+
+
 
 
 // const JSON_SERVER = 'http://localhost:3003';
